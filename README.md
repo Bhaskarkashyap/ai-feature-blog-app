@@ -244,10 +244,4 @@ The project uses Tailwind CSS with custom components defined in `src/index.css`.
 - Dark mode
 - Export to PDF
 
-## License
 
-MIT License - feel free to use this project for any purpose.
-
-## Support
-
-For issues or questions, please check the troubleshooting section or refer to the documentation.
