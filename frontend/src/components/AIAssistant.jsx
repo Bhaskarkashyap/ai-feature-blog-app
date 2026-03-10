@@ -121,7 +121,11 @@ function AIAssistant({ title, content, onTitleChange, onContentChange }) {
   return (
     <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg border-2 border-purple-200 mb-6">
       <button
-        onClick={() => setExpanded(!expanded)}
+        type="button"
+        onClick={(e) => {
+          e.preventDefault();
+          setExpanded(!expanded);
+        }}
         className="w-full px-6 py-4 flex items-center justify-between font-semibold text-lg text-purple-900 hover:bg-purple-100 rounded-t-lg transition-colors"
       >
         <div className="flex items-center gap-2">
@@ -139,8 +143,9 @@ function AIAssistant({ title, content, onTitleChange, onContentChange }) {
             </div>
           )}
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 gap-2">
             <button
+              type="button"
               onClick={handleGenerateTitle}
               disabled={loading}
               className="btn btn-primary text-sm disabled:opacity-50"
@@ -148,6 +153,7 @@ function AIAssistant({ title, content, onTitleChange, onContentChange }) {
               {loading ? <Loader size={16} className="loading-spinner" /> : '✨'} Generate Title
             </button>
             <button
+              type="button"
               onClick={handleGenerateSummary}
               disabled={loading}
               className="btn btn-primary text-sm disabled:opacity-50"
@@ -155,6 +161,7 @@ function AIAssistant({ title, content, onTitleChange, onContentChange }) {
               {loading ? <Loader size={16} className="loading-spinner" /> : '📝'} Summary
             </button>
             <button
+              type="button"
               onClick={handleImproveContent}
               disabled={loading}
               className="btn btn-primary text-sm disabled:opacity-50"
@@ -162,6 +169,7 @@ function AIAssistant({ title, content, onTitleChange, onContentChange }) {
               {loading ? <Loader size={16} className="loading-spinner" /> : '🎯'} Improve
             </button>
             <button
+              type="button"
               onClick={handleSEORecommendations}
               disabled={loading}
               className="btn btn-primary text-sm disabled:opacity-50"
@@ -169,6 +177,7 @@ function AIAssistant({ title, content, onTitleChange, onContentChange }) {
               {loading ? <Loader size={16} className="loading-spinner" /> : '🔍'} SEO
             </button>
             <button
+              type="button"
               onClick={handlePostIdeas}
               disabled={loading}
               className="btn btn-primary text-sm disabled:opacity-50"
@@ -182,7 +191,7 @@ function AIAssistant({ title, content, onTitleChange, onContentChange }) {
               <div className="flex justify-between items-center mb-2">
                 <h4 className="font-semibold text-gray-900">Result:</h4>
                 {activeTab === 'title' && (
-                  <button onClick={applyTitle} className="btn btn-primary text-sm">
+                  <button type="button" onClick={(e) => { e.preventDefault(); applyTitle(); }} className="btn btn-primary text-sm">
                     Use This Title
                   </button>
                 )}
